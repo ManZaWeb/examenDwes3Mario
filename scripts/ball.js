@@ -1,4 +1,11 @@
-import { randomRGB } from "./random.js";
+import { random, randomRGB } from "./random.js";
+
+
+
+export const canvas = document.querySelector('canvas');
+export const ctx = canvas.getContext('2d');
+export const width = canvas.width = window.innerWidth;//2 innerWidth no innerHeigth
+export const height = canvas.height = window.innerHeight;
 
 export class Ball {
     constructor(x, y, velX, velY, size) {
@@ -41,7 +48,7 @@ export class Ball {
     }
 }
 
-const balls = [];
+export const balls = [];
 
 while (balls.length < 20) {
     const size = random(10, 20);
