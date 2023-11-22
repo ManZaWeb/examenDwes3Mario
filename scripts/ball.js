@@ -1,3 +1,5 @@
+import { randomRGB } from "./random.js";
+
 export class Ball {
     constructor(x, y, velX, velY, size) {
         this.x = x;
@@ -37,4 +39,19 @@ export class Ball {
             otherBall.color = this.color = randomRGB();
         }
     }
+}
+
+const balls = [];
+
+while (balls.length < 20) {
+    const size = random(10, 20);
+    const ball = new Ball(
+        random(0 + size, width - size),
+        random(0 + size, height - size),
+        random(-7, 7),
+        random(-7, 7),
+        size
+    );
+
+    balls.push(ball);
 }
