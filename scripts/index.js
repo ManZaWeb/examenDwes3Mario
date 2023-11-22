@@ -1,7 +1,9 @@
+import { Ball } from "./ball.js";
+
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 
-const width = canvas.width = window.innerWidth;//innerWidth no innerHeigth
+const width = canvas.width = window.innerWidth;//2 innerWidth no innerHeigth
 const height = canvas.height = window.innerHeight;
 
 function random(min, max) {
@@ -12,50 +14,11 @@ function randomRGB() {
     return `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`;
 }
 
-class Ball {
-    constructor(x, y, velX, velY, size) {
-        this.x = x;
-        this.y = y;
-        this.velX = velX;
-        this.velY = velY;
-        this.color = randomRGB();
-        this.size = size;
-    }
 
-    draw() {
-        ctx.beginPath();
-        ctx.fillStyle = this.color;
-        ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);//2Math.pi no es una función
-        ctx.fill();
-    }
-
-    update() {
-        if ((this.x + this.size) >= width || (this.x - this.size) <= 0) {
-            this.velX = -this.velX;
-        }
-
-        if ((this.y + this.size) >= height || (this.y - this.size) <= 0) {
-            this.velY = -this.velY;
-        }
-
-        this.x += this.velX;
-        this.y += this.velY;
-    }
-
-    collisionDetect(otherBall) {
-        const dx = this.x - otherBall.x;
-        const dy = this.y - otherBall.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-
-        if (distance < this.size + otherBall.size) {
-            otherBall.color = this.color = randomRGB();
-        }
-    }
-}
 
 const balls = [];
 
-while (balls.length < 4) {
+while (balls.length < 20) {
     const size = random(10, 20);
     const ball = new Ball(
         random(0 + size, width - size),
