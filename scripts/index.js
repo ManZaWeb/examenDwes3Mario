@@ -1,7 +1,7 @@
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 
-const width = canvas.width = window.innerHeight;
+const width = canvas.width = window.innerWidth;//innerWidth no innerHeigth
 const height = canvas.height = window.innerHeight;
 
 function random(min, max) {
@@ -18,7 +18,7 @@ class Ball {
         this.y = y;
         this.velX = velX;
         this.velY = velY;
-        this.color = randomRGB();//1
+        this.color = randomRGB();
         this.size = size;
     }
 
