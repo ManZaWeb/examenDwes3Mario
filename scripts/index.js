@@ -18,14 +18,14 @@ class Ball {
         this.y = y;
         this.velX = velX;
         this.velY = velY;
-        this.color = randomRGB();
+        this.color = randomRGB();//1
         this.size = size;
     }
 
     draw() {
         ctx.beginPath();
         ctx.fillStyle = this.color;
-        ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI());
+        ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);//2Math.pi no es una función
         ctx.fill();
     }
 
